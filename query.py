@@ -11,5 +11,6 @@ else:
     print(f"Starting query of the NASA Exoplanet Archive current to today, {date.today()}")
     query = NasaExoplanetArchive.query_criteria(table="pscomppars", select="*")#,where="disc_facility like '%TESS%'")
     data = query.to_pandas()
-    data.to_csv(filename)
+    reduced_data = data[['hostname', 'pl_name', 'pl_msinie', 'pl_rade', 'disc_year', 'disc_refname', 'discoverymethod', 'disc_facility', 'ra', 'dec','gaia_dr3_id']]
+    reduced_data.to_csv(filename)
     print(f"Saved query results to /{filename}")
