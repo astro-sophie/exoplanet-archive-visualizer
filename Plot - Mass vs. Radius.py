@@ -3,7 +3,8 @@ import plotly.express as px
 
 def create_mass_radius_plot(df, year):
 
-    plot_df = df.dropna(
+    filtered_df = df[df['disc_year'] <= year ]
+    plot_df = filtered_df.dropna(
         subset=["pl_msinie", "pl_rade", "discoverymethod"]
     )
 
